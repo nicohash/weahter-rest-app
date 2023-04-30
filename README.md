@@ -1,6 +1,21 @@
-# Getting Started with Create React App
+# Weather Rest App
+
+A simple rest app build with React.js
+
+[Live Demo](https://weathersunrise.de.cool/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## APIs used in this project
+
+### OpenWeahterMap
+
+[Current Weather Data](https://openweathermap.org/current)
+[Geocoding](https://openweathermap.org/api/geocoding-api)
+
+### Sunrise and Sunset
+
+[Sunset and Sunrise](https://sunrise-sunset.org/api)
 
 ## Available Scripts
 
