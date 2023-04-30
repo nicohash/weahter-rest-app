@@ -128,7 +128,7 @@ function App() {
     );
   }
 
-// TODO: add link to GH (exchange Github for Icon)
+// TODO: exchange Github text for Icon)
 // TODO: add button to add cities
 // TODO: improve this with Container Bootstrap
   return (
@@ -147,7 +147,7 @@ function App() {
           {content}
         </section>
       </div>
-      <a href="">View on Github</a>
+      <a href="https://github.com/nicohash/weahter-rest-app">View on Github</a>
     </div>
   );
 }
