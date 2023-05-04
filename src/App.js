@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Oval } from  'react-loader-spinner'
 import CityInputForm from "./components/CityInputForm";
+import sun from './images/sun.png';
 import cloud from './images/cloud.png'; // TODO: credit flaticon
+import github from './images/github.png';
 import keys from "./secrets.json";
 import './App.css';
 
@@ -19,42 +21,67 @@ function App() {
       const weatherData = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${keys.openWeatherAPI}&units=metric`
       ).then((response) => response.json());
-      /*
-      const geocodingData = await fetch(
-        // TODO: input geocoding API
+      const sunData = await fetch(
+        `https://api.sunrise-sunset.org/json?lat=${weatherData.coord.lat}&lng=${weatherData.coord.lon}&formatted=0`
       ).then((response) => response.json());
-      const sunriseData = await fetch(
-        // TODO: input sunrise API
-      ).then((response) => response.json());
-      */
 
-      const c = new Date();
-      // Sonntag, 30. April um 17:10
-      const currentTime = c.toLocaleString("de-DE", {
-        hour: "numeric",
-        minute: "numeric",
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-      });
+      const currentDate = new Date();
+
+      function convertTZ(date) {
+        const rawDate = new Date(typeof date === "string" ? new Date(date) : date);
+
+        const localTZOffsetSeconds = rawDate.getTimezoneOffset() * 60;
+        const cityTZOffsetSeconds = weatherData.timezone;
+        const totalOffsetMilliseconds = (cityTZOffsetSeconds + localTZOffsetSeconds) * 1000;
+
+        const rawDateTZ = rawDate.getTime() + totalOffsetMilliseconds;
+
+        return new Date(rawDateTZ);
+      }
+
+      function format(date) {
+        return date.toLocaleString("us-US", {
+          hour: "numeric",
+          minute: "numeric",
+          weekday: "long",
+          month: "long",
+          day: "numeric",
+        });
+      }
+
+      function formatHM(date) {
+        return date.toLocaleString("us-US", {
+          hour: "numeric",
+          minute: "numeric",
+        });
+      }
+
+      function setWeatherIcon() {
+        if (weatherData.weather[0].main === "Clear") {
+          return sun;
+        }
+
+        return cloud;
+      }
 
       const transformedData = [
         {
           name: weatherData.name,
-          currentTime: currentTime,
+          currentTime: format(convertTZ(currentDate)),
+          icon: setWeatherIcon(),
+          description: weatherData.weather[0].main,
           feels_like: Math.trunc(weatherData.main.feels_like),
           temp: Math.trunc(weatherData.main.temp),
           humidity: Math.trunc(weatherData.main.humidity),
-          wind: Math.trunc(weatherData.wind.speed),
-          sunrise: "No data yet",
-          sunset: "No data yet"
+          wind: Math.trunc(weatherData.wind.speed * 3,6),
+          sunrise: formatHM(convertTZ(sunData.results.sunrise)),
+          sunset: formatHM(convertTZ(sunData.results.sunset))
         },
       ];
 
       setData(transformedData);
 
-      // TODO: add checks for sunrise and geocoding APIs
-      if (!weatherData.ok) {
+      if (!weatherData.ok || !sunData.ok) {
         throw new Error("Something went wrong!");
       }
     } catch (error) {
@@ -89,7 +116,7 @@ function App() {
           <div className="cityTitle">{data[0].name}</div>
           <div className="currentTime">{data[0].currentTime}</div>
           <div className="currentWeather">
-          <img src={cloud} alt="Cloud" />
+          <img src={data[0].icon} alt="Weather Icon"/>
             <div className="temp-wrapper">
               <div className="temp-big">
                 {data[0].temp}
@@ -99,7 +126,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="textWeather">Cloudy</div>
+          <div className="textWeather">{data[0].description}</div>
           <div className="feelsLike">
             Feels Like {data[0].feels_like} &deg;C
           </div>
@@ -110,7 +137,7 @@ function App() {
             </div>
             <div className="col">
               <h4>Wind Speed</h4>
-              {data[0].wind} kph
+              {data[0].wind} km/h
             </div>
           </div>
           <div className="row bottom-info">
