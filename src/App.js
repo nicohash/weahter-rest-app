@@ -178,17 +178,13 @@ function App() {
         <CityInputForm onSubmitHandler={addCityHandler} />
       </section>
       <div className="cards">
-        <section className="main">
-          {content}
-        </section>
-        <section className="main">
-          {content}
-        </section>
-        <section className="main">
+        <section className="card">
           {content}
         </section>
       </div>
-      <a href="https://github.com/nicohash/weahter-rest-app">View on Github</a>
+      <div className="footer">
+        <a href="https://github.com/nicohash/weahter-rest-app" target="_blank" rel="noopener noreferrer"><img src={github} alt="Github"/></a>
+      </div>
     </div>
   );
 }
