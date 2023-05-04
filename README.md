@@ -8,8 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## APIs used in this project
 
-- [Current Weather Data](https://openweathermap.org/current)
-- [Geocoding](https://openweathermap.org/api/geocoding-api)
+- [Open Weather Map](https://openweathermap.org/current)
 - [Sunset and Sunrise](https://sunrise-sunset.org/api)
 
 ## Available Scripts
