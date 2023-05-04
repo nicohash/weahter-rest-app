@@ -104,14 +104,28 @@ function App() {
   }
 
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = (
+      <div className="card-inner-loading">
+        <Oval
+          height={80}
+          width={80}
+          color="#1c1c1c"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          ariaLabel='oval-loading'
+          secondaryColor="#888888"
+          strokeWidth={2}
+          strokeWidthSecondary={2}
+        />
+      </div>
+    )
   }
 
-  // TODO: add sunrise and sunset data as new row bottom-info
   // TODO: check length of locally saved cities list instead of data.length
   if (data.length > 0) {
     content = (
-      <section className="main-inner">
+      <section className="card-inner">
         <div className="widget">
           <div className="cityTitle">{data[0].name}</div>
           <div className="currentTime">{data[0].currentTime}</div>
