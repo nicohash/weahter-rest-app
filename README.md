@@ -27,7 +27,7 @@ nano frontend/src/secrets-mock.json
 ```
 3. Rename secrets-mock.json to secrets.json
 ```zsh
-mv secrets-mock.json secrets.json
+mv frontend/src/secrets-mock.json frontend/src/secrets.json
 ```
 4. Run the app
 ```zsh
