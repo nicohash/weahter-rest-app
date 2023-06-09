@@ -40,7 +40,7 @@ function App() {
       }
 
       function format(date) {
-        return date.toLocaleString("us-US", {
+        return date.toLocaleString("en-GB", {
           hour: "numeric",
           minute: "numeric",
           weekday: "long",
@@ -50,7 +50,7 @@ function App() {
       }
 
       function formatHM(date) {
-        return date.toLocaleString("us-US", {
+        return date.toLocaleString("en-GB", {
           hour: "numeric",
           minute: "numeric",
         });
