@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Oval } from  'react-loader-spinner'
 import CityInputForm from "./components/CityInputForm";
 import sun from './images/sun.png';
-import cloud from './images/cloud.png'; // TODO: credit flaticon
+import cloud from './images/cloud.png';
 import github from './images/github.png';
 import keys from "./secrets.json";
 import './App.css';
@@ -122,7 +122,6 @@ function App() {
     )
   }
 
-  // TODO: check length of locally saved cities list instead of data.length
   if (data.length > 0) {
     content = (
       <section className="card-inner">
@@ -169,9 +168,6 @@ function App() {
     );
   }
 
-// TODO: exchange Github text for Icon)
-// TODO: add button to add cities
-// TODO: improve this with Container Bootstrap
   return (
     <div className="App">
       <section className="top-bar">
