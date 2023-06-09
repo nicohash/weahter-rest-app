@@ -20,6 +20,16 @@ cd ~/weather-rest-app
 
 ## Usage
 
+1. Create a free account at https://openweathermap.org/ and obtain an API key.
+2. Add your API key to frontend/src/secrets-mock.json. To edit the file:
+``` zsh
+nano frontend/src/secrets-mock.json
+```
+3. Rename secrets-mock.json to secrets.json
+```zsh
+mv secrets-mock.json secrets.json
+```
+4. Run the app
 ```zsh
 python -m flask run
 ```
