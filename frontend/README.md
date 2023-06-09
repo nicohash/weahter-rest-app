@@ -5,7 +5,10 @@ A simple weather app build with React.
 [Live Demo](https://weathersunrise.de.cool/)
 
 If you want to try out our frontend without the API please have a look at the available scripts.
-Note: In order for these commands to work you must be within the /frontend folder!
+In order for these commands to work you must be within the /frontend folder and install node_modules with:
+```zsh
+npm install
+```
 
 Our frontend was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
