@@ -5,7 +5,7 @@ import json
 import requests
 import numpy as np
 
-secret_key = 'dfeba70d9f972107532c3e160005b9b2'
+secret_key = 'Please insert you API key here'
 cities = []
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
