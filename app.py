@@ -4,8 +4,14 @@ from flask_cors import CORS
 import json
 import requests
 import numpy as np
+import json
 
-secret_key = 'Please insert you API key here'
+def get_keys(path):
+    with open(path) as f:
+        return json.load(f)
+
+keys = get_keys("frontend/src/secrets.json")
+secret_key = keys['openWeatherAPI']
 cities = []
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
