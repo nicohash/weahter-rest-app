@@ -48,3 +48,7 @@ The React frontend can also be used without the API. More info on this [here](fr
 
 - [Open Weather Map](https://openweathermap.org/current)
 - [Sunset and Sunrise](https://sunrise-sunset.org/api)
+
+## Credits
+
+Icons made by iconixar and Freepik from www.flaticon.com
