@@ -36,6 +36,12 @@ python -m flask run
 
 ### Hints
 
+If you get errors due to missing dependencies just run the following command while in the projects root directory:
+``` zsh
+pip install -r requirements.txt
+
+```
+
 The React frontend can also be used without the API. More info on this [here](frontend/README.md).
 
 ## APIs used in this project
