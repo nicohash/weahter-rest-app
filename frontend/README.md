@@ -12,6 +12,11 @@ npm install
 
 Our frontend was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Documentation
+
+We have documented the frontend via [JSDoc](https://jsdoc.app/index.html).
+All docs can be found [here](https://weathersunrise-docs.de.cool/index.html).
+
 ## Available Scripts
 
 In the project directory, you can run:
