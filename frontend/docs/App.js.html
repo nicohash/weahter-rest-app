@@ -1,4 +1,32 @@
-import React, { useState, useEffect, useCallback } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: App.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: App.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect, useCallback } from "react";
 import { Oval } from  'react-loader-spinner'
 import CityInputForm from "./components/CityInputForm";
 import sun from './images/sun.png';
@@ -64,7 +92,7 @@ function App() {
        * @constant weatherData
        */
       const weatherData = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${keys.openWeatherAPI}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&amp;appid=${keys.openWeatherAPI}&amp;units=metric`
       ).then((response) => response.json());
 
       /**
@@ -72,7 +100,7 @@ function App() {
        * @constant sunData
        */
       const sunData = await fetch(
-        `https://api.sunrise-sunset.org/json?lat=${weatherData.coord.lat}&lng=${weatherData.coord.lon}&formatted=0`
+        `https://api.sunrise-sunset.org/json?lat=${weatherData.coord.lat}&amp;lng=${weatherData.coord.lon}&amp;formatted=0`
       ).then((response) => response.json());
 
       /**
@@ -187,16 +215,16 @@ function App() {
    * Keeps track of the HTML content that should be shown to the user
    * @type content
    */
-  let content = <p>No weather or sun data available.</p>;
+  let content = &lt;p>No weather or sun data available.&lt;/p>;
 
   if (error) {
-    content = <p>Error: {error}</p>;
+    content = &lt;p>Error: {error}&lt;/p>;
   }
 
   if (isLoading) {
     content = (
-      <div className="card-inner-loading">
-        <Oval
+      &lt;div className="card-inner-loading">
+        &lt;Oval
           height={80}
           width={80}
           color="#1c1c1c"
@@ -208,71 +236,93 @@ function App() {
           strokeWidth={2}
           strokeWidthSecondary={2}
         />
-      </div>
+      &lt;/div>
     )
   }
 
   if (data.length > 0) {
     content = (
-      <section className="card-inner">
-        <div className="widget">
-          <div className="cityTitle">{data[0].name}</div>
-          <div className="currentTime">{data[0].currentTime}</div>
-          <div className="currentWeather">
-          <img src={data[0].icon} alt="Weather Icon"/>
-            <div className="temp-wrapper">
-              <div className="temp-big">
+      &lt;section className="card-inner">
+        &lt;div className="widget">
+          &lt;div className="cityTitle">{data[0].name}&lt;/div>
+          &lt;div className="currentTime">{data[0].currentTime}&lt;/div>
+          &lt;div className="currentWeather">
+          &lt;img src={data[0].icon} alt="Weather Icon"/>
+            &lt;div className="temp-wrapper">
+              &lt;div className="temp-big">
                 {data[0].temp}
-              </div>
-              <div className="sup">
-                <div className="deg">&deg;C</div>
-              </div>
-            </div>
-          </div>
-          <div className="textWeather">{data[0].description}</div>
-          <div className="feelsLike">
-            Feels Like {data[0].feels_like} &deg;C
-          </div>
-          <div className="row bottom-info">
-            <div className="col">
-              <h4>Humidity</h4>
+              &lt;/div>
+              &lt;div className="sup">
+                &lt;div className="deg">&amp;deg;C&lt;/div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+          &lt;div className="textWeather">{data[0].description}&lt;/div>
+          &lt;div className="feelsLike">
+            Feels Like {data[0].feels_like} &amp;deg;C
+          &lt;/div>
+          &lt;div className="row bottom-info">
+            &lt;div className="col">
+              &lt;h4>Humidity&lt;/h4>
               {data[0].humidity}%
-            </div>
-            <div className="col">
-              <h4>Wind Speed</h4>
+            &lt;/div>
+            &lt;div className="col">
+              &lt;h4>Wind Speed&lt;/h4>
               {data[0].wind} km/h
-            </div>
-          </div>
-          <div className="row bottom-info">
-            <div className="col">
-              <h4>Sunrise</h4>
+            &lt;/div>
+          &lt;/div>
+          &lt;div className="row bottom-info">
+            &lt;div className="col">
+              &lt;h4>Sunrise&lt;/h4>
               {data[0].sunrise}
-            </div>
-            <div className="col">
-              <h4>Sunset</h4>
+            &lt;/div>
+            &lt;div className="col">
+              &lt;h4>Sunset&lt;/h4>
               {data[0].sunset}
-            </div>
-          </div>
-        </div>
-      </section>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/section>
     );
   }
 
   return (
-    <div className="App">
-      <section className="top-bar">
-        <CityInputForm onSubmitHandler={addCityHandler} />
-      </section>
-      <div className="cards">
-        <section className="card">
+    &lt;div className="App">
+      &lt;section className="top-bar">
+        &lt;CityInputForm onSubmitHandler={addCityHandler} />
+      &lt;/section>
+      &lt;div className="cards">
+        &lt;section className="card">
           {content}
-        </section>
-      </div>
-      <div className="footer">
-        <a href="https://github.com/nicohash/weahter-rest-app" target="_blank" rel="noopener noreferrer"><img src={github} alt="Github"/></a>
-      </div>
-    </div>
+        &lt;/section>
+      &lt;/div>
+      &lt;div className="footer">
+        &lt;a href="https://github.com/nicohash/weahter-rest-app" target="_blank" rel="noopener noreferrer">&lt;img src={github} alt="Github"/>&lt;/a>
+      &lt;/div>
+    &lt;/div>
   );
 }
 
-export default App;
+export default App;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CityInputForm">CityInputForm</a></li><li><a href="global.html#city">city</a></li><li><a href="global.html#convertTZdate">convertTZ</a></li><li><a href="global.html#currentDate">currentDate</a></li><li><a href="global.html#data">data</a></li><li><a href="global.html#error">error</a></li><li><a href="global.html#formatdate">format</a></li><li><a href="global.html#formatHMdate">formatHM</a></li><li><a href="global.html#isLoading">isLoading</a></li><li><a href="global.html#setCity">setCity</a></li><li><a href="global.html#setData">setData</a></li><li><a href="global.html#setError">setError</a></li><li><a href="global.html#setIsLoading">setIsLoading</a></li><li><a href="global.html#setWeatherIcon">setWeatherIcon</a></li><li><a href="global.html#sunData">sunData</a></li><li><a href="global.html#weatherData">weatherData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sun Jun 18 2023 00:27:30 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
