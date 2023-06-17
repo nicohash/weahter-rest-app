@@ -4,6 +4,7 @@ import CityInputForm from "./components/CityInputForm";
 import sun from './images/sun.png';
 import cloud from './images/cloud.png';
 import github from './images/github.png';
+import docs from './images/docs.png';
 import keys from "./secrets.json";
 import './App.css';
 
@@ -270,6 +271,7 @@ function App() {
       </div>
       <div className="footer">
         <a href="https://github.com/nicohash/weahter-rest-app" target="_blank" rel="noopener noreferrer"><img src={github} alt="Github"/></a>
+        <a href="https://weathersunrise-docs.de.cool/index.html" target="_blank" rel="noopener noreferrer"><img src={docs} alt="Docs"/></a>
       </div>
     </div>
   );
