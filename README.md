@@ -44,6 +44,11 @@ pip install -r requirements.txt
 
 The React frontend can also be used without the API. More info on this [here](frontend/README.md).
 
+## Documentation
+
+We have documented the frontend via [JSDoc](https://jsdoc.app/index.html).
+All docs can be found [here](https://weathersunrise-docs.de.cool/index.html).
+
 ## APIs used in this project
 
 - [Open Weather Map](https://openweathermap.org/current)
@@ -51,4 +56,4 @@ The React frontend can also be used without the API. More info on this [here](fr
 
 ## Credits
 
-Icons made by iconixar and Freepik from www.flaticon.com
+Icons made by iconixar, heisenberg_jr and Freepik from www.flaticon.com
