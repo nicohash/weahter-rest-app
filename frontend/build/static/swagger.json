@@ -1,0 +1,208 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Powerful API to interact with weather and sun data about cities",
+    "version": "1.0.0",
+    "title": "Weather Sunrise API",
+    "contact": {
+      "email": "nicolas.haase@fs-students.de"
+    }
+  },
+  "paths": {
+    "/city/?city={name}": {
+      "get": {
+        "tags": [
+          "City Request"
+        ],
+        "summary": "Returns city weather and sun data",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "description": "City Name",
+            "schema": {
+              "$ref": "#/components/schemas/name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cityRequest"
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/cities": {
+      "get": {
+        "tags": [
+          "City Request"
+        ],
+        "summary": "Get list of saved cities",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cityRequests"
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/citypost/?city={name}": {
+      "post": {
+        "tags": [
+          "City Post"
+        ],
+        "summary": "Create a new city request",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "description": "City Name",
+            "schema": {
+              "$ref": "#/components/schemas/name"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cityPost"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/citydelete/?city={name}": {
+      "delete": {
+        "summary": "Delete City by name",
+        "tags": [
+          "City Delete"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "description": "City Name",
+            "schema": {
+              "$ref": "#/components/schemas/name"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cityDelete"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "name": {
+        "properties": {
+          "city": {
+            "type": "string"
+          }
+        }
+      },
+      "cityRequest": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "feels_like": {
+                "type": "float"
+              },
+              "temp": {
+                "type": "float"
+              },
+              "humidity": {
+                "type": "int"
+              },
+              "wind": {
+                "type": "float"
+              },
+              "sunrise": {
+                "type": "date"
+              },
+              "sunset": {
+                "type": "date"
+              }
+            }
+          }
+        }
+      },
+      "cityRequests": {
+        "type": "object",
+        "properties": {
+          "cityRequest": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/cityRequest"
+            }
+          }
+        }
+      },
+      "cityDelete": {
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "cityPost": {
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
