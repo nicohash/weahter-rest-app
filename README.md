@@ -49,6 +49,9 @@ The React frontend can also be used without the API. More info on this [here](fr
 We have documented the frontend via [JSDoc](https://jsdoc.app/index.html).
 All docs can be found [here](https://weathersunrise-docs.de.cool/index.html).
 
+The documentation for out API was done with [SwaggerUI](https://swagger.io/tools/swagger-ui/).
+All API-docs can be accessed at http://localhost:5000/swagger/ after the flask app is started.
+
 ## APIs used in this project
 
 - [Open Weather Map](https://openweathermap.org/current)
